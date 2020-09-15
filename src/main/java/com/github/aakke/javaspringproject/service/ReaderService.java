@@ -7,11 +7,6 @@ import com.github.aakke.javaspringproject.model.Reader;
 public interface ReaderService {
 	
 	/**
-	 * Get reader.
-	 */
-	void getReader();
-	
-	/**
 	 * Find reader by id.
 	 * @param id id
 	 * @return reader
@@ -23,4 +18,20 @@ public interface ReaderService {
 	 * @return list of all readers
 	 */
 	List<Reader> findAll();
+	
+	/**
+	 * Delete reader by its id.
+	 * @param id id
+	 */
+	void deleteById(Long id);
+	
+	/**
+	 * Persist new reader.
+	 */
+	void create(Reader newReader);
+	
+	/**
+	 * Update reader.
+	 */
+	void update(Reader reader);
 }
