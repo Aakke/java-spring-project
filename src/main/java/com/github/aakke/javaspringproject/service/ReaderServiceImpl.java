@@ -2,8 +2,6 @@ package com.github.aakke.javaspringproject.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
-
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +18,7 @@ public class ReaderServiceImpl implements ReaderService{
 	
 	@Override
 	public Reader findById(long id) {
-		return readerRepo.findById(id).orElseThrow(EntityNotFoundException::new);
+		return readerRepo.findById(id).orElseThrow(() -> new EntityNotFoundException("No reader found."));
 	}
 
 	@Override
