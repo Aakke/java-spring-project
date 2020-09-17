@@ -30,7 +30,7 @@ public class Book extends AbstractBaseEntity implements Serializable{
 	private Author author;
 	
 	@ManyToOne
-	@JoinColumn(name="reader_id", nullable=false)
+	@JoinColumn(name="reader_id")
 	private Reader reader;
 
 	/**
