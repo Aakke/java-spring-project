@@ -32,12 +32,12 @@ public class ReaderController {
 	}
 	
 	@PostMapping("/reader/{id}")
-	public ResponseEntity<Reader> newReader() {
+	public ResponseEntity<Reader> newReader(@PathVariable int id) {
 		return null;
 	}
 	
 	@PutMapping("/reader/{id}")
-	public ResponseEntity<Reader> updateReader() {
+	public ResponseEntity<Reader> updateReader(@PathVariable int id) {
 		return null;
 	}
 }
