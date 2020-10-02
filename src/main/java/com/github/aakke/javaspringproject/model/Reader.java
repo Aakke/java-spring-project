@@ -21,7 +21,10 @@ public class Reader extends AbstractBaseEntity implements Serializable{
 	private long id;
 	
 	@Column(nullable=false, length=255)
-	private String name;
+	private String firstName;
+	
+	@Column(nullable=false, length=255)
+	private String lastName;
 	
 	@Column(nullable=false)
 	private int birthYear;
@@ -49,15 +52,29 @@ public class Reader extends AbstractBaseEntity implements Serializable{
 	/**
 	 * @return the name
 	 */
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String name) {
+		this.firstName = name;
+	}
+
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	/**
@@ -133,7 +150,7 @@ public class Reader extends AbstractBaseEntity implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Reader [id=" + id + ", name=" + name + ", birthYear=" + birthYear + ", address=" + address
-				+ ", readBooks=" + readBooks + "]";
+		return "Reader [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", birthYear=" + birthYear
+				+ ", address=" + address + ", readBooks=" + readBooks + "]";
 	}
 }

@@ -44,7 +44,8 @@ public class ReaderServiceImpl implements ReaderService{
 		var reader = findById(id);
 		
 		reader.setAddress(readerData.getAddress());
-		reader.setName(readerData.getName());
+		reader.setFirstName(readerData.getFirstName());
+		reader.setLastName(readerData.getLastName());
 		reader.setBirthYear(readerData.getBirthYear());
 		
 		return readerRepo.save(reader);
