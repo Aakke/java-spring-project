@@ -35,13 +35,19 @@ public class ReaderServiceImpl implements ReaderService{
 	}
 
 	@Override
-	public void create(Reader newReader) {
-		readerRepo.save(newReader);
+	public Reader create(Reader newReader) {
+		return readerRepo.save(newReader);
 	}
 
 	@Override
-	public void update(Reader reader) {
-		readerRepo.save(reader);
+	public Reader update(int id, Reader readerData) {
+		var reader = findById(id);
+		
+		reader.setAddress(readerData.getAddress());
+		reader.setName(readerData.getName());
+		reader.setBirthYear(readerData.getBirthYear());
+		
+		return readerRepo.save(reader);
 	}
 
 }

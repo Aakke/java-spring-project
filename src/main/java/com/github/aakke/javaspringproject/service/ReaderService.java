@@ -28,10 +28,10 @@ public interface ReaderService {
 	/**
 	 * Persist new reader.
 	 */
-	void create(Reader newReader);
+	Reader create(Reader newReader);
 	
 	/**
 	 * Update reader.
 	 */
-	void update(Reader reader);
+	Reader update(int id, Reader reader);
 }

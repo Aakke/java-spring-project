@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ public class ReaderController {
 	@Autowired
 	private ReaderService readerService;
 	
-	@GetMapping("/reader/{id}")//, produces = "application/json")
+	@GetMapping("/reader/{id}")
 	public ResponseEntity<Reader> getReader(@PathVariable int id) {
 		return ResponseEntity.ok().body(readerService.findById(id));
 	}
@@ -31,13 +32,16 @@ public class ReaderController {
 		return readerService.findAll();
 	}
 	
-	@PostMapping("/reader/{id}")
-	public ResponseEntity<Reader> newReader(@PathVariable int id) {
-		return null;
+	@PostMapping("/reader")
+	public ResponseEntity<Reader> newReader(@RequestBody Reader newReader) {
+		Reader reader = readerService.create(newReader);
+		return ResponseEntity.ok().body(reader);
 	}
 	
 	@PutMapping("/reader/{id}")
-	public ResponseEntity<Reader> updateReader(@PathVariable int id) {
-		return null;
+	public ResponseEntity<Reader> updateReader(@PathVariable int id, @RequestBody Reader reader) {
+		// TODO: eTag/If-match headers.
+		Reader updatedReader = readerService.update(id, reader);
+		return ResponseEntity.ok().body(updatedReader);
 	}
 }
