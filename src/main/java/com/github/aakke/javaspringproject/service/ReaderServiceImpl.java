@@ -21,7 +21,7 @@ public class ReaderServiceImpl implements ReaderService{
 	}
 	
 	@Override
-	public Reader findById(long id) {
+	public Reader findById(final long id) {
 		return readerRepo.findById(id).orElseThrow(() -> new EntityNotFoundException("No reader found."));
 	}
 
@@ -34,17 +34,17 @@ public class ReaderServiceImpl implements ReaderService{
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deleteById(final Long id) {
 		readerRepo.delete(findById(id));
 	}
 
 	@Override
-	public Reader create(Reader newReader) {
+	public Reader create(final Reader newReader) {
 		return readerRepo.save(newReader);
 	}
 
 	@Override
-	public Reader update(int id, Reader readerData) {
+	public Reader update(final int id, final Reader readerData) {
 		var reader = findById(id);
 		
 		reader.setAddress(readerData.getAddress());

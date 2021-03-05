@@ -19,11 +19,15 @@ import com.github.aakke.javaspringproject.service.ReaderService;
 @RequestMapping("/api")
 public class ReaderController {
 
+	private final ReaderService readerService;
+	
 	@Autowired
-	private ReaderService readerService;
+	public ReaderController(ReaderService readerService) {
+		this.readerService = readerService;
+	}
 	
 	@GetMapping("/reader/{id}")
-	public ResponseEntity<Reader> getReader(@PathVariable int id) {
+	public ResponseEntity<Reader> getReader(@PathVariable final int id) {
 		return ResponseEntity.ok().body(readerService.findById(id));
 	}
 	
@@ -33,13 +37,13 @@ public class ReaderController {
 	}
 	
 	@PostMapping("/reader")
-	public ResponseEntity<Reader> newReader(@RequestBody Reader newReader) {
+	public ResponseEntity<Reader> newReader(@RequestBody final Reader newReader) {
 		Reader reader = readerService.create(newReader);
 		return ResponseEntity.ok().body(reader);
 	}
 	
 	@PutMapping("/reader/{id}")
-	public ResponseEntity<Reader> updateReader(@PathVariable int id, @RequestBody Reader reader) {
+	public ResponseEntity<Reader> updateReader(@PathVariable final int id, @RequestBody final Reader reader) {
 		// TODO: eTag/If-match headers.
 		Reader updatedReader = readerService.update(id, reader);
 		return ResponseEntity.ok().body(updatedReader);
