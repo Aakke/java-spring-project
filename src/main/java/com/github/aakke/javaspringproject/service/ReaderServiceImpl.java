@@ -13,8 +13,12 @@ import com.github.aakke.javaspringproject.repository.ReaderRepository;
 @Service
 public class ReaderServiceImpl implements ReaderService{
 
+	private final ReaderRepository readerRepo;
+	
 	@Autowired
-	private ReaderRepository readerRepo;
+	public ReaderServiceImpl(ReaderRepository readerRepo) {
+		this.readerRepo = readerRepo;
+	}
 	
 	@Override
 	public Reader findById(long id) {
