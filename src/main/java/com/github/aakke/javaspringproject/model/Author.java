@@ -35,5 +35,15 @@ public class Author extends AbstractBaseEntity implements Serializable{
 	
 	@OneToMany(mappedBy = "author")
 	private Set<Book> books = new LinkedHashSet<>();
+	
+	
+	/**
+	 * Helper method for adding single book for author.
+	 * @param book book
+	 */
+	public void addBook(Book book) {
+		this.books.add(book);
+		book.setAuthor(this);
+	}
 
 }
