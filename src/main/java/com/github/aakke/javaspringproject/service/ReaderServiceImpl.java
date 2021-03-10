@@ -51,6 +51,7 @@ public class ReaderServiceImpl implements ReaderService{
 		reader.setFirstName(readerData.getFirstName());
 		reader.setLastName(readerData.getLastName());
 		reader.setBirthYear(readerData.getBirthYear());
+		readerData.getReadBooks().forEach(b -> reader.addBook(b));
 		
 		return readerRepo.save(reader);
 	}
