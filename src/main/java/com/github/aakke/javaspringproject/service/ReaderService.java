@@ -23,7 +23,7 @@ public interface ReaderService {
 	 * Delete reader by its id.
 	 * @param id id
 	 */
-	void deleteById(Long id);
+	void deleteById(long id);
 	
 	/**
 	 * Persist new reader.
@@ -33,5 +33,5 @@ public interface ReaderService {
 	/**
 	 * Update reader.
 	 */
-	Reader update(int id, Reader reader);
+	Reader update(long id, Reader reader);
 }

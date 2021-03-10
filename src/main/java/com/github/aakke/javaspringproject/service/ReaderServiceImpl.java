@@ -34,7 +34,7 @@ public class ReaderServiceImpl implements ReaderService{
 	}
 
 	@Override
-	public void deleteById(final Long id) {
+	public void deleteById(final long id) {
 		readerRepo.delete(findById(id));
 	}
 
@@ -44,7 +44,7 @@ public class ReaderServiceImpl implements ReaderService{
 	}
 
 	@Override
-	public Reader update(final int id, final Reader readerData) {
+	public Reader update(final long id, final Reader readerData) {
 		var reader = findById(id);
 		
 		reader.setAddress(readerData.getAddress());
