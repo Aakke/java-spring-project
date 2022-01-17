@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,5 +47,10 @@ public class AuthorController {
 	public ResponseEntity<Author> updateAuthor(@PathVariable final int id, @RequestBody final Author author) {
 		Author updatedAuthor = authorService.update(id, author);
 		return ResponseEntity.ok().body(updatedAuthor);
+	}
+	
+	@DeleteMapping("/author/{id}")
+	public void deleteAuthorById(@PathVariable final int id) {
+		authorService.deleteById(id);
 	}
 }
