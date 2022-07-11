@@ -3,15 +3,15 @@
 ## Tools and environment
 - Eclipse 
 - Java 13
-- H2-database (development only)
+- MariaDB
 - Thymeleaf
 - Maven
+- Postman
 
 ## TODO / WIP
-- MySQL / MariaDB as database
 - React front-end
 - Error handling
-- Spring security
+- Spring security (advanced)
 
 ## Author
 Aleksi Tani - aleksitani@gmail.com
