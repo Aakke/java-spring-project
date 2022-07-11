@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class Author extends AbstractBaseEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -33,17 +34,7 @@ public class Author extends AbstractBaseEntity implements Serializable{
 	@Column(nullable=false)
 	private int birthYear;
 	
-	@OneToMany(mappedBy = "author")
+	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Set<Book> books = new LinkedHashSet<>();
-	
-	
-	/**
-	 * Helper method for adding single book for author.
-	 * @param book book
-	 */
-	public void addBook(Book book) {
-		this.books.add(book);
-		book.setAuthor(this);
-	}
 
 }

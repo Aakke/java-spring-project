@@ -46,14 +46,11 @@ public class ReaderServiceImpl implements ReaderService{
 	@Override
 	public Reader update(final long id, final Reader readerData) {
 		var reader = findById(id);
+		var existingReader = reader;
+
+		// TODO: Validation...
 		
-		reader.setAddress(readerData.getAddress());
-		reader.setFirstName(readerData.getFirstName());
-		reader.setLastName(readerData.getLastName());
-		reader.setBirthYear(readerData.getBirthYear());
-		readerData.getReadBooks().forEach(b -> reader.addBook(b));
-		
-		return readerRepo.save(reader);
+		return readerRepo.save(readerData);
 	}
 
 }
