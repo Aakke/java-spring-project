@@ -1,17 +1,17 @@
 # Java spring project
 
 ## Tools and environment
-- Eclipse 
-- Java 13
-- MariaDB
+- Eclipse / Visual Code
+- Java 21
+- H2 (dev)
 - Thymeleaf
 - Maven
-- Postman
 
 ## TODO / WIP
 - React front-end
 - Error handling
-- Spring security (advanced)
+- Spring security
+- Docker
 
 ## Author
 Aleksi Tani - aleksitani@gmail.com
