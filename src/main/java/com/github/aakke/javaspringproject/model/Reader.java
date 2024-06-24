@@ -4,13 +4,12 @@ import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -40,7 +39,7 @@ public class Reader extends AbstractBaseEntity implements Serializable{
 	@Column(nullable=false, length=255)
 	private String address;
 	
-	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	private Set<Book> readBooks = new LinkedHashSet<>();
+	@ElementCollection
+	private Set<Long> readBooks = new LinkedHashSet<>();
 
 }

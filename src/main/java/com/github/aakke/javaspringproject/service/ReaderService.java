@@ -29,6 +29,13 @@ public interface ReaderService {
 	 * Persist new reader.
 	 */
 	Reader create(Reader newReader);
+
+	/**
+	 * Creates batch of readers.
+	 * @param readers new readers
+	 * @return created readers
+	 */
+	List<Reader> createBatch(List<Reader> readers);
 	
 	/**
 	 * Update reader.

@@ -2,6 +2,7 @@ package com.github.aakke.javaspringproject.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -41,6 +42,18 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public Book create(Book newBook) {
 		return bookRepo.save(newBook);
+	}
+
+	@Override
+	public List<Book> createBatch(List<Book> books) {
+		final List<Book> createdBooks = new ArrayList<>();
+		books.stream()
+				.filter(book -> Objects.nonNull(book))
+				.forEach(book -> {
+					final var createdBook = bookRepo.save(book);
+					createdBooks.add(createdBook);
+				});
+		return createdBooks;
 	}
 
 	@Override

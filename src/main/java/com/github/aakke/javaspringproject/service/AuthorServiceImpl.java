@@ -2,6 +2,7 @@ package com.github.aakke.javaspringproject.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -45,6 +46,18 @@ public class AuthorServiceImpl implements AuthorService{
 	public Author create(Author newAuthor) {
 		// TODO: Some validation...
 		return authorRepo.save(newAuthor);
+	}
+
+	@Override
+	public List<Author> createBatch(List<Author> authors) {
+		final List<Author> createdAuthors = new ArrayList<>();
+		authors.stream()
+				.filter(author -> Objects.nonNull(author))
+				.forEach(author -> {
+					final var createdAuthor = authorRepo.save(author);
+					createdAuthors.add(createdAuthor);
+				});
+		return createdAuthors;
 	}
 
 	@Override

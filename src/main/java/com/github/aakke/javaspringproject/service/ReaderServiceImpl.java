@@ -2,11 +2,12 @@ package com.github.aakke.javaspringproject.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import jakarta.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.github.aakke.javaspringproject.model.Reader;
 import com.github.aakke.javaspringproject.repository.ReaderRepository;
 
@@ -41,6 +42,18 @@ public class ReaderServiceImpl implements ReaderService{
 	@Override
 	public Reader create(final Reader newReader) {
 		return readerRepo.save(newReader);
+	}
+
+	@Override
+	public List<Reader> createBatch(List<Reader> readers) {
+		final List<Reader> createdReaders = new ArrayList<>();
+		readers.stream()
+				.filter(reader -> Objects.nonNull(reader))
+				.forEach(reader -> {
+					final var createdReader = readerRepo.save(reader);
+					createdReaders.add(createdReader);
+				});
+		return createdReaders;
 	}
 
 	@Override

@@ -31,6 +31,13 @@ public interface AuthorService {
 	 * @return new author
 	 */
 	Author create(Author newAuthor);
+
+	/**
+	 * Create batch of new authors.
+	 * @param authors new authors
+	 * @return created authors
+	 */
+	List<Author> createBatch(List<Author> authors);
 	
 	/**
 	 * Update author by id.

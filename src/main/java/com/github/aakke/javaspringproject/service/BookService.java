@@ -31,6 +31,13 @@ public interface BookService {
 	 * @return new book
 	 */
 	Book create(Book newBook);
+
+	/**
+	 * Creates new books in batch.
+	 * @param books new books
+	 * @return created books
+	 */
+	List<Book> createBatch(List<Book> books);
 	
 	/**
 	 * Update book by id.
