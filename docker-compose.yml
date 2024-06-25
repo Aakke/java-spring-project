@@ -1,0 +1,12 @@
+
+services:
+  
+  db: 
+    image: postgres:latest
+    container_name: postgresdb
+    ports:
+      - '15432:5432'
+    environment:
+      - 'POSTGRES_USER=admin'
+      - 'POSTGRES_DB=springprojectdb'
+      - 'POSTGRES_PASSWORD=posadmin'

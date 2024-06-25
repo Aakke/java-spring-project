@@ -3,15 +3,14 @@
 ## Tools and environment
 - Eclipse / Visual Code
 - Java 21
-- H2 (dev)
-- Thymeleaf
+- PostgreSQL
+- Docker
 - Maven
 
 ## TODO / WIP
 - React front-end
 - Error handling
-- Spring security
-- Docker
+- More finegrained spring security
 
 ## Author
 Aleksi Tani - aleksitani@gmail.com
