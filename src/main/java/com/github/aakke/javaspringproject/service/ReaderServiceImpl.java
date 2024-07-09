@@ -8,6 +8,7 @@ import jakarta.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.github.aakke.javaspringproject.model.Reader;
 import com.github.aakke.javaspringproject.repository.ReaderRepository;
 
@@ -46,23 +47,16 @@ public class ReaderServiceImpl implements ReaderService{
 
 	@Override
 	public List<Reader> createBatch(List<Reader> readers) {
-		final List<Reader> createdReaders = new ArrayList<>();
-		readers.stream()
+		final List<Reader> toBeCreatedReaders = readers.stream()
 				.filter(reader -> Objects.nonNull(reader))
-				.forEach(reader -> {
-					final var createdReader = readerRepo.save(reader);
-					createdReaders.add(createdReader);
-				});
+				.toList();
+
+		final List<Reader> createdReaders = (List<Reader>) readerRepo.saveAll(toBeCreatedReaders);
 		return createdReaders;
 	}
 
 	@Override
 	public Reader update(final long id, final Reader readerData) {
-		var reader = findById(id);
-		var existingReader = reader;
-
-		// TODO: Validation...
-		
 		return readerRepo.save(readerData);
 	}
 

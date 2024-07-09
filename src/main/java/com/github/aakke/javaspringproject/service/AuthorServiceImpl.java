@@ -13,15 +13,13 @@ import com.github.aakke.javaspringproject.model.Author;
 import com.github.aakke.javaspringproject.repository.AuthorRepository;
 
 @Service
-public class AuthorServiceImpl implements AuthorService{
+public class AuthorServiceImpl implements AuthorService {
 
 	private final AuthorRepository authorRepo;
-	private final BookService bookService;
-	
+
 	@Autowired
-	public AuthorServiceImpl(final AuthorRepository authorRepo, final BookService bookService) {
+	public AuthorServiceImpl(final AuthorRepository authorRepo) {
 		this.authorRepo = authorRepo;
-		this.bookService = bookService;
 	}
 
 	@Override
@@ -44,31 +42,22 @@ public class AuthorServiceImpl implements AuthorService{
 
 	@Override
 	public Author create(Author newAuthor) {
-		// TODO: Some validation...
 		return authorRepo.save(newAuthor);
 	}
 
 	@Override
 	public List<Author> createBatch(List<Author> authors) {
-		final List<Author> createdAuthors = new ArrayList<>();
-		authors.stream()
+		final List<Author> toBeCreatedAuthors = authors.stream()
 				.filter(author -> Objects.nonNull(author))
-				.forEach(author -> {
-					final var createdAuthor = authorRepo.save(author);
-					createdAuthors.add(createdAuthor);
-				});
+				.toList();
+
+		final List<Author> createdAuthors = (List<Author>) authorRepo.saveAll(toBeCreatedAuthors);
 		return createdAuthors;
 	}
 
 	@Override
 	public Author update(long id, Author updateAuthor) {
-		var author = findById(id);
-		var existingAuthor = author;
-		
-		// TODO: Validation...
-		
 		return authorRepo.save(updateAuthor);
 	}
-	
-	
+
 }

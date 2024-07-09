@@ -14,8 +14,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 /**
  * Security configurations for spring project.
- * @author Aleksi Tani
- * @version 8.12.2020
  */
 @Configuration
 @EnableWebSecurity
@@ -23,7 +21,7 @@ public class SecurityConfig {
 	
 	@Bean
     public InMemoryUserDetailsManager userDetailsService() {
-          UserDetails user = User.withUsername("admin")
+          final UserDetails user = User.withUsername("admin")
                   .password(passwordEncoder().encode("admin123"))
                   .roles("ADMIN")
                   .build();

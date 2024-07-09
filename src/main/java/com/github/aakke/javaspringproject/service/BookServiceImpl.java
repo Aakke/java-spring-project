@@ -46,13 +46,11 @@ public class BookServiceImpl implements BookService{
 
 	@Override
 	public List<Book> createBatch(List<Book> books) {
-		final List<Book> createdBooks = new ArrayList<>();
-		books.stream()
+		final List<Book> toBeCreatedBooks = books.stream()
 				.filter(book -> Objects.nonNull(book))
-				.forEach(book -> {
-					final var createdBook = bookRepo.save(book);
-					createdBooks.add(createdBook);
-				});
+				.toList();
+
+		final List<Book> createdBooks = (List<Book>) bookRepo.saveAll(toBeCreatedBooks);
 		return createdBooks;
 	}
 
