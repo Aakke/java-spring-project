@@ -1,4 +1,4 @@
-package com.github.aakke.javaspringproject.model;
+package com.github.aakke.javaspringproject.persistence.model;
 
 import java.time.Instant;
 

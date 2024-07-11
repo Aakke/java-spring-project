@@ -1,4 +1,4 @@
-package com.github.aakke.javaspringproject.controller;
+package com.github.aakke.javaspringproject.api.controller;
 
 import java.util.Collection;
 
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.aakke.javaspringproject.model.Book;
+import com.github.aakke.javaspringproject.persistence.model.Book;
 import com.github.aakke.javaspringproject.service.BookService;
 
 @RestController

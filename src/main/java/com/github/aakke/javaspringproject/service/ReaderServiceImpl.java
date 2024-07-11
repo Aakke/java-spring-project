@@ -9,8 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github.aakke.javaspringproject.model.Reader;
-import com.github.aakke.javaspringproject.repository.ReaderRepository;
+import com.github.aakke.javaspringproject.persistence.model.Reader;
+import com.github.aakke.javaspringproject.persistence.repository.ReaderRepository;
 
 @Service
 public class ReaderServiceImpl implements ReaderService{

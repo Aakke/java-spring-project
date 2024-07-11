@@ -9,8 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github.aakke.javaspringproject.model.Author;
-import com.github.aakke.javaspringproject.repository.AuthorRepository;
+import com.github.aakke.javaspringproject.persistence.model.Author;
+import com.github.aakke.javaspringproject.persistence.repository.AuthorRepository;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {

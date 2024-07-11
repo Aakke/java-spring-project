@@ -2,7 +2,7 @@ package com.github.aakke.javaspringproject.service;
 
 import java.util.List;
 
-import com.github.aakke.javaspringproject.model.Reader;
+import com.github.aakke.javaspringproject.persistence.model.Reader;
 
 public interface ReaderService {
 	

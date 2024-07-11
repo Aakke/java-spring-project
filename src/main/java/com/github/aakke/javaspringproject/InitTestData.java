@@ -8,9 +8,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import com.github.aakke.javaspringproject.model.Author;
-import com.github.aakke.javaspringproject.model.Book;
-import com.github.aakke.javaspringproject.model.Reader;
+import com.github.aakke.javaspringproject.persistence.model.Author;
+import com.github.aakke.javaspringproject.persistence.model.Book;
+import com.github.aakke.javaspringproject.persistence.model.Reader;
 import com.github.aakke.javaspringproject.service.AuthorService;
 import com.github.aakke.javaspringproject.service.BookService;
 import com.github.aakke.javaspringproject.service.ReaderService;

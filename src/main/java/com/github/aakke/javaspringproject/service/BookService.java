@@ -2,7 +2,7 @@ package com.github.aakke.javaspringproject.service;
 
 import java.util.List;
 
-import com.github.aakke.javaspringproject.model.Book;
+import com.github.aakke.javaspringproject.persistence.model.Book;
 
 public interface BookService {
 

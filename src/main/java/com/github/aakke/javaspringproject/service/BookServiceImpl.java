@@ -9,8 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 
 import org.springframework.stereotype.Service;
 
-import com.github.aakke.javaspringproject.model.Book;
-import com.github.aakke.javaspringproject.repository.BookRepository;
+import com.github.aakke.javaspringproject.persistence.model.Book;
+import com.github.aakke.javaspringproject.persistence.repository.BookRepository;
 
 @Service
 public class BookServiceImpl implements BookService{
