@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.aakke.javaspringproject.persistence.model.Reader;
+import com.github.aakke.javaspringproject.api.model.ReaderDTO;
+import com.github.aakke.javaspringproject.api.model.mapper.ReaderMapper;
 import com.github.aakke.javaspringproject.service.ReaderService;
 
 @RestController // Spring Rest Controller.
@@ -21,32 +22,33 @@ import com.github.aakke.javaspringproject.service.ReaderService;
 public class ReaderController {
 
 	private final ReaderService readerService;
+	private final ReaderMapper readerMapper;
 	
 	@Autowired
-	public ReaderController(ReaderService readerService) {
+	public ReaderController(ReaderService readerService, final ReaderMapper readerMapper) {
 		this.readerService = readerService;
+		this.readerMapper = readerMapper;
 	}
 	
 	@GetMapping("/reader/{id}")
-	public ResponseEntity<Reader> getReader(@PathVariable final int id) {
-		return ResponseEntity.ok().body(readerService.findById(id));
+	public ResponseEntity<ReaderDTO> getReader(@PathVariable final int id) {
+		return ResponseEntity.ok().body(readerMapper.toDto(readerService.findById(id)));
 	}
 	
 	@GetMapping("/readers")
-	public Collection<Reader> getAllReaders() {
-		return readerService.findAll();
+	public Collection<ReaderDTO> getAllReaders() {
+		return readerMapper.toDtoList(readerService.findAll());
 	}
 	
 	@PostMapping("/reader")
-	public ResponseEntity<Reader> newReader(@RequestBody final Reader newReader) {
-		Reader reader = readerService.create(newReader);
+	public ResponseEntity<ReaderDTO> newReader(@RequestBody final ReaderDTO newReader) {
+		ReaderDTO reader = readerMapper.toDto(readerService.create(readerMapper.toPm(newReader)));
 		return ResponseEntity.ok().body(reader);
 	}
 	
 	@PutMapping("/reader/{id}")
-	public ResponseEntity<Reader> updateReader(@PathVariable final int id, @RequestBody final Reader reader) {
-		// TODO: eTag/If-match headers.
-		Reader updatedReader = readerService.update(id, reader);
+	public ResponseEntity<ReaderDTO> updateReader(@PathVariable final int id, @RequestBody final ReaderDTO reader) {
+		ReaderDTO updatedReader = readerMapper.toDto(readerService.update(id, readerMapper.toPm(reader)));
 		return ResponseEntity.ok().body(updatedReader);
 	}
 	

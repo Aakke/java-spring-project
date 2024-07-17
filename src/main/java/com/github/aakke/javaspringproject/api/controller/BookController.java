@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.aakke.javaspringproject.persistence.model.Book;
+import com.github.aakke.javaspringproject.api.model.BookDTO;
+import com.github.aakke.javaspringproject.api.model.mapper.BookMapper;
 import com.github.aakke.javaspringproject.service.BookService;
 
 @RestController
@@ -21,31 +22,33 @@ import com.github.aakke.javaspringproject.service.BookService;
 public class BookController {
 
 	private final BookService bookService;
+	private final BookMapper bookMapper;
 	
 	@Autowired
-	public BookController(final BookService service) {
+	public BookController(final BookService service, final BookMapper bookMapper) {
+		this.bookMapper = bookMapper;
 		this.bookService = service;
 	}
 	
 	@GetMapping("/book/{id}")
-	public ResponseEntity<Book> getBook(@PathVariable final int id) {
-		return ResponseEntity.ok().body(bookService.findById(id));
+	public ResponseEntity<BookDTO> getBook(@PathVariable final int id) {
+		return ResponseEntity.ok().body(bookMapper.toDto(bookService.findById(id)));
 	}
 	
 	@GetMapping("/books")
-	public Collection<Book> getAllBooks() {
-		return bookService.findAll();
+	public Collection<BookDTO> getAllBooks() {
+		return bookMapper.toDtoList(bookService.findAll());
 	}
 	
 	@PostMapping("/book")
-	public ResponseEntity<Book> newBook(@RequestBody final Book newBook) {
-		Book book = bookService.create(newBook);
+	public ResponseEntity<BookDTO> newBook(@RequestBody final BookDTO newBook) {
+		BookDTO book = bookMapper.toDto(bookService.create(bookMapper.toPm(newBook)));
 		return ResponseEntity.ok().body(book);
 	}
 	
 	@PutMapping("/book/{id}")
-	public ResponseEntity<Book> updateBook(@PathVariable final int id, @RequestBody final Book book) {
-		Book updatedBook = bookService.update(id, book);
+	public ResponseEntity<BookDTO> updateBook(@PathVariable final int id, @RequestBody final BookDTO book) {
+		BookDTO updatedBook = bookMapper.toDto(bookService.update(id, bookMapper.toPm(book)));
 		return ResponseEntity.ok().body(updatedBook);
 	}
 	
