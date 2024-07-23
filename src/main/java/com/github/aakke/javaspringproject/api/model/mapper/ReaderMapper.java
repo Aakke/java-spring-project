@@ -14,6 +14,7 @@ public class ReaderMapper {
 
         return new ReaderDTO(
                 pm.getId(),
+                pm.getVersion(),
                 pm.getFirstName(),
                 pm.getLastName(),
                 pm.getBirthYear(),
@@ -25,6 +26,7 @@ public class ReaderMapper {
 
         final Reader pm = new Reader();
         pm.setId(dto.id());
+        pm.setVersion(dto.version());
         pm.setLastName(dto.lastName());
         pm.setFirstName(dto.firstName());
         pm.setBirthYear(dto.birthYear());

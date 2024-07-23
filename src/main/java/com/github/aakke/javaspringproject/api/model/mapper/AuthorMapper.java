@@ -14,6 +14,7 @@ public class AuthorMapper {
 
         return new AuthorDTO(
                 pm.getId(),
+                pm.getVersion(),
                 pm.getName(),
                 pm.getBirthYear(),
                 pm.getBooks());
@@ -23,6 +24,7 @@ public class AuthorMapper {
 
         final Author pm = new Author();
         pm.setId(dto.id());
+        pm.setVersion(dto.version());
         pm.setName(dto.name());
         pm.setBirthYear(dto.birthYear());
         pm.setBooks(dto.books());

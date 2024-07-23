@@ -14,6 +14,7 @@ public class BookMapper {
 
         return new BookDTO(
                 pm.getId(),
+                pm.getVersion(),
                 pm.getName(),
                 pm.getPublished());
     }
@@ -22,6 +23,7 @@ public class BookMapper {
 
         final Book pm = new Book();
         pm.setId(dto.id());
+        pm.setVersion(dto.version());
         pm.setName(dto.name());
         pm.setPublished(dto.published());
         return pm;
